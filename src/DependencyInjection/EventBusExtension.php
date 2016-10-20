@@ -5,17 +5,19 @@ namespace Bruli\EventBusBundle\DependencyInjection;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
-use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class EventBusExtension extends ConfigurableExtension
+class EventBusExtension extends Extension
 {
     /**
-     * Configures the passed container according to the merged configuration.
+     * Loads a specific configuration.
      *
-     * @param array $mergedConfig
-     * @param ContainerBuilder $container
+     * @param array $configs An array of configuration values
+     * @param ContainerBuilder $container A ContainerBuilder instance
+     *
+     * @throws \InvalidArgumentException When provided tag is not defined in this extension
      */
-    protected function loadInternal(array $mergedConfig, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container)
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/Config'));
         $loader->load('services.yml');

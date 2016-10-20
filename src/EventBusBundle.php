@@ -19,6 +19,4 @@ class EventBusBundle extends Bundle
         $container->addCompilerPass(new CommandBusCompilerPass());
         $container->addCompilerPass(new QueryBusCompilerPass());
     }
-
-
 }
