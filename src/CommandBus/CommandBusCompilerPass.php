@@ -14,11 +14,11 @@ class CommandBusCompilerPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        if (!$container->has('command.bus')) {
+        if (!$container->has('bruli.command.bus')) {
             return;
         }
 
-        $commandBus = $container->findDefinition('bus.options.resolver');
+        $commandBus = $container->findDefinition('bruli.bus.options.resolver');
         $commandHandlers = $container->findTaggedServiceIds('command_handler');
 
         foreach ($commandHandlers as $id => $tags) {

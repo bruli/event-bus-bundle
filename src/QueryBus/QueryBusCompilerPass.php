@@ -14,11 +14,11 @@ class QueryBusCompilerPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        if (!$container->has('query.bus')) {
+        if (!$container->has('bruli.query.bus')) {
             return;
         }
 
-        $queryBus = $container->findDefinition('bus.options.resolver');
+        $queryBus = $container->findDefinition('bruli.bus.options.resolver');
         $queryHandlers = $container->findTaggedServiceIds('query_handler');
 
         foreach ($queryHandlers as $id => $tags) {
