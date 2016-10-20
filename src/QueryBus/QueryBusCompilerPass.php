@@ -1,11 +1,11 @@
 <?php
 
-namespace EventBus\CommandBus;
+namespace Bruli\EventBusBundle\QueryBus;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class CommandBusCompilerPass implements CompilerPassInterface
+class QueryBusCompilerPass implements CompilerPassInterface
 {
     /**
      * You can modify the container here before it is dumped to PHP code.
@@ -14,16 +14,16 @@ class CommandBusCompilerPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        if (!$container->has('command.bus')) {
+        if (!$container->has('query.bus')) {
             return;
         }
 
-        $commandBus = $container->findDefinition('bus.options.resolver');
-        $commandHandlers = $container->findTaggedServiceIds('command_handler');
+        $queryBus = $container->findDefinition('bus.options.resolver');
+        $queryHandlers = $container->findTaggedServiceIds('query_handler');
 
-        foreach ($commandHandlers as $id => $tags) {
+        foreach ($queryHandlers as $id => $tags) {
             foreach ($tags as $attributes) {
-                $commandBus->addMethodCall('addOption', [$attributes['handles'], $id]);
+                $queryBus->addMethodCall('addOption', [$attributes['handles'], $id]);
             }
         }
     }

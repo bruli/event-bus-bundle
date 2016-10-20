@@ -1,6 +1,6 @@
 <?php
 
-namespace EventBus\CommandBus;
+namespace Bruli\EventBusBundle\CommandBus;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 

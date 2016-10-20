@@ -1,10 +1,10 @@
 <?php
 
-namespace EventBus;
+namespace Bruli\EventBusBundle;
 
-use EventBus\CommandBus\CommandBusCompilerPass;
-use EventBus\DependencyInjection\EventBusExtension;
-use EventBus\QueryBus\QueryBusCompilerPass;
+use Bruli\EventBusBundle\CommandBus\CommandBusCompilerPass;
+use Bruli\EventBusBundle\DependencyInjection\EventBusExtension;
+use Bruli\EventBusBundle\QueryBus\QueryBusCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

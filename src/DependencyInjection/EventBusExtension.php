@@ -1,6 +1,6 @@
 <?php
 
-namespace EventBus\DependencyInjection;
+namespace Bruli\EventBusBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

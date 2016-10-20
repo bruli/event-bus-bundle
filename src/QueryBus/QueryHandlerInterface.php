@@ -1,6 +1,6 @@
 <?php
 
-namespace EventBus\QueryBus;
+namespace Bruli\EventBusBundle\QueryBus;
 
 interface QueryHandlerInterface
 {

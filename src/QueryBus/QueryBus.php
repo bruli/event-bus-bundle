@@ -1,8 +1,8 @@
 <?php
 
-namespace EventBus\QueryBus;
+namespace Bruli\EventBusBundle\QueryBus;
 
-use EventBus\BusOptionsResolver;
+use Bruli\EventBusBundle\BusOptionsResolver;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class QueryBus
