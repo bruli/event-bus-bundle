@@ -3,27 +3,12 @@
 namespace Bruli\EventBusBundle;
 
 use Bruli\EventBusBundle\CommandBus\CommandBusCompilerPass;
-use Bruli\EventBusBundle\DependencyInjection\EventBusExtension;
 use Bruli\EventBusBundle\QueryBus\QueryBusCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class EventBusBundle extends Bundle
 {
-    /**
-     * @var string
-     */
-    private $configurationAlias;
-
-    /**
-     * EventBusBundle constructor.
-     * @param string $alias
-     */
-    public function __construct($alias = 'event.bus')
-    {
-        $this->configurationAlias = $alias;
-    }
-
     /**
      * @param ContainerBuilder $container
      */
@@ -33,11 +18,6 @@ class EventBusBundle extends Bundle
 
         $container->addCompilerPass(new CommandBusCompilerPass());
         $container->addCompilerPass(new QueryBusCompilerPass());
-    }
-
-    public function getContainerExtension()
-    {
-        return new EventBusExtension($this->configurationAlias);
     }
 
 
