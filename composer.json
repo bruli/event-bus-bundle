@@ -17,6 +17,6 @@
         }
     ],
     "autoload": {
-        "psr-4" : { "EventBus\\" : "src" }
+        "psr-0" : { "EventBus\\" : "src" }
     }
 }
