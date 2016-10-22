@@ -1,4 +1,4 @@
-# event-bus-bundle
+# EVENT-BUS-BUNDLE
 Bundle to use event bus in symfony projects
 ======
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bruli/event-bus-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bruli/event-bus-bundle/?branch=master)
