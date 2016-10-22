@@ -1,5 +1,4 @@
-# EVENT-BUS-BUNDLE
-Bundle to use event bus in symfony projects
+# event-bus-bundle
 ======
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bruli/event-bus-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bruli/event-bus-bundle/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/bruli/event-bus-bundle/v/stable.svg)](https://packagist.org/packages/bruli/event-bus-bundle) 
@@ -8,6 +7,8 @@ Bundle to use event bus in symfony projects
 [![License](https://poser.pugx.org/bruli/event-bus-bundle/license.svg)](https://packagist.org/packages/bruli/event-bus-bundle)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/c402ad75-26d7-4dc9-b774-c064b16d30cf/mini.png)](https://insight.sensiolabs.com/projects/c402ad75-26d7-4dc9-b774-c064b16d30cf)
 [![Donate button](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.me/brulics)
+
+Bundle to use event bus in symfony projects
 
 ## Installation
 
