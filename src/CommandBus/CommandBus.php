@@ -2,6 +2,7 @@
 
 namespace Bruli\EventBusBundle\CommandBus;
 
+use Bruli\EventBusBundle\BusOptionsResolver;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class CommandBus
