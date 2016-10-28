@@ -19,7 +19,7 @@ class CommandBusCompilerPass implements CompilerPassInterface
         }
 
         $commandBus = $container->findDefinition('bruli.bus.options.resolver');
-        $commandHandlers = $container->findTaggedServiceIds('command_handler');
+        $commandHandlers = $container->findTaggedServiceIds('bruli.command_handler');
 
         foreach ($commandHandlers as $id => $tags) {
             foreach ($tags as $attributes) {

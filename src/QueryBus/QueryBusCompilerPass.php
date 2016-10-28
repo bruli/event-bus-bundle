@@ -19,7 +19,7 @@ class QueryBusCompilerPass implements CompilerPassInterface
         }
 
         $queryBus = $container->findDefinition('bruli.bus.options.resolver');
-        $queryHandlers = $container->findTaggedServiceIds('query_handler');
+        $queryHandlers = $container->findTaggedServiceIds('bruli.query_handler');
 
         foreach ($queryHandlers as $id => $tags) {
             foreach ($tags as $attributes) {
