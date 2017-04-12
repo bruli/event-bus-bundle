@@ -1,4 +1,4 @@
-# event-bus-bundle
+event-bus-bundle
 ======
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bruli/event-bus-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bruli/event-bus-bundle/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/bruli/event-bus-bundle/v/stable.svg)](https://packagist.org/packages/bruli/event-bus-bundle) 
