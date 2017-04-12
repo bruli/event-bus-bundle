@@ -4,10 +4,10 @@
     "type": "library",
     "keywords": ["Symfony", "event bus", "command bus"],
     "require": {
-        "symfony/dependency-injection": "~2.8",
-        "symfony/yaml": "~2.8",
-        "symfony/config": "~2.8",
-        "symfony/http-kernel": "~2.8"
+        "symfony/dependency-injection": "~3.0",
+        "symfony/yaml": "~3.0",
+        "symfony/config": "~3.0",
+        "symfony/http-kernel": "~3.0"
     },
     "license": "MIT",
     "authors": [
