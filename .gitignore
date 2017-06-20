@@ -1,2 +1,4 @@
 vendor/
 .idea
+/tests/Infrastructure/cache/
+/tests/Infrastructure/logs/
