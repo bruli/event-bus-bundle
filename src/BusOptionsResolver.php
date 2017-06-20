@@ -66,6 +66,24 @@ class BusOptionsResolver
 
     /**
      * @param string $command
+     * @return bool
+     */
+    public function preMiddleWareHasCommand($command)
+    {
+        return array_key_exists($command, $this->preMiddleWareOption);
+    }
+
+    /**
+     * @param string $command
+     * @return bool
+     */
+    public function postMiddleWareHasCommand($command)
+    {
+        return array_key_exists($command, $this->preMiddleWareOption);
+    }
+
+    /**
+     * @param string $command
      * @return string
      */
     public function getPostMiddleWareOption($command)

@@ -33,8 +33,40 @@ class CommandBus
      */
     public function handle(CommandInterface $command)
     {
-        $this->container->get($this->optionsResolver->getPreMiddleWareOption('\\'.get_class($command)))->handle($command);
-        $this->container->get($this->optionsResolver->getOption('\\'.get_class($command)))->handle($command);
-        $this->container->get($this->optionsResolver->getPostMiddleWareOption('\\'.get_class($command)))->handle($command);
+        $this->handlePreMiddleWares($command);
+        $this->handleCommand($command);
+        $this->handlePostMiddleWares($command);
+    }
+
+    /**
+     * @param CommandInterface $command
+     */
+    private function handlePreMiddleWares(CommandInterface $command)
+    {
+        if (true === $this->optionsResolver->preMiddleWareHasCommand(get_class($command))) {
+            $this->container->get($this->optionsResolver->getPreMiddleWareOption('\\' . get_class($command)))->handle(
+                $command
+            );
+        }
+    }
+
+    /**
+     * @param CommandInterface $command
+     */
+    private function handleCommand(CommandInterface $command)
+    {
+        $this->container->get($this->optionsResolver->getOption('\\' . get_class($command)))->handle($command);
+    }
+
+    /**
+     * @param CommandInterface $command
+     */
+    private function handlePostMiddleWares(CommandInterface $command)
+    {
+        if (true === $this->optionsResolver->postMiddleWareHasCommand(get_class($command))) {
+            $this->container->get($this->optionsResolver->getPostMiddleWareOption('\\' . get_class($command)))->handle(
+                $command
+            );
+        }
     }
 }

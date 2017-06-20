@@ -1,0 +1,5 @@
+services:
+  single.command.handler:
+    class: Bruli\EventBusBundleTests\Infrastructure\SingleCommandHandler
+    tags:
+      - {name: bruli.command_handler, handles: \Bruli\EventBusBundleTests\Infrastructure\SingleCommand }
