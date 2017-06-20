@@ -64,4 +64,22 @@ class CommandBusTest extends TestCase
         unlink($handlerFilename);
         unlink($preHandlerFilename);
     }
+
+    /**
+     * @test
+     */
+    public function itShouldHandleWithPostMiddleWare()
+    {
+        $this->app->setCommand(new WithPostMiddleWareCommand());
+
+        $this->app->doRun($this->input, $this->outputInterface);
+
+        $handlerFilename = __DIR__ . '/' . WithPostMiddleWareHandler::FILE_TEST;
+        $postHandlerFilename = __DIR__.'/'. PostMiddleWareHandler::FILE_TEST;
+        $this->assertTrue(file_exists($handlerFilename));
+        $this->assertTrue(file_exists($postHandlerFilename));
+
+        unlink($handlerFilename);
+        unlink($postHandlerFilename);
+    }
 }

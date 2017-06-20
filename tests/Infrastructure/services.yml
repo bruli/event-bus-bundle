@@ -11,3 +11,11 @@ services:
     class: Bruli\EventBusBundleTests\Behaviour\PreMiddleWareHandler
     tags:
       - { name: bruli.command_pre_middleware, handles: \Bruli\EventBusBundleTests\Behaviour\WithPreMiddleWareCommand }
+  with.pro.middleware.handler:
+    class: Bruli\EventBusBundleTests\Behaviour\WithPostMiddleWareHandler
+    tags:
+      - { name: bruli.command_handler, handles: \Bruli\EventBusBundleTests\Behaviour\WithPostMiddleWareCommand }
+  post.middleware.handler:
+    class: Bruli\EventBusBundleTests\Behaviour\PostMiddleWareHandler
+    tags:
+      - { name: bruli.command_post_middleware, handles: \Bruli\EventBusBundleTests\Behaviour\WithPostMiddleWareCommand }

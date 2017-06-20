@@ -64,8 +64,9 @@ class CommandBus
      */
     private function handlePostMiddleWares(CommandInterface $command)
     {
-        if (true === $this->optionsResolver->postMiddleWareHasCommand(get_class($command))) {
-            $this->container->get($this->optionsResolver->getPostMiddleWareOption('\\' . get_class($command)))->handle(
+        $commandName = '\\' . get_class($command);
+        if (true === $this->optionsResolver->postMiddleWareHasCommand($commandName)) {
+            $this->container->get($this->optionsResolver->getPostMiddleWareOption($commandName))->handle(
                 $command
             );
         }

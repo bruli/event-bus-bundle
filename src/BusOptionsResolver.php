@@ -79,7 +79,7 @@ class BusOptionsResolver
      */
     public function postMiddleWareHasCommand($command)
     {
-        return array_key_exists($command, $this->preMiddleWareOption);
+        return array_key_exists($command, $this->postMiddleWareOption);
     }
 
     /**
