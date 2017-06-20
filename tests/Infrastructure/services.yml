@@ -1,5 +1,13 @@
 services:
   single.command.handler:
-    class: Bruli\EventBusBundleTests\Infrastructure\SingleCommandHandler
+    class: Bruli\EventBusBundleTests\Behaviour\SingleCommandHandler
     tags:
-      - {name: bruli.command_handler, handles: \Bruli\EventBusBundleTests\Infrastructure\SingleCommand }
+      - {name: bruli.command_handler, handles: \Bruli\EventBusBundleTests\Behaviour\SingleCommand }
+  with.pre.middleware.handler:
+    class: Bruli\EventBusBundleTests\Behaviour\WithPreMiddleWareHandler
+    tags:
+      - { name: bruli.command_handler, handles: \Bruli\EventBusBundleTests\Behaviour\WithPreMiddleWareCommand }
+  pre.middleware.handler:
+    class: Bruli\EventBusBundleTests\Behaviour\PreMiddleWareHandler
+    tags:
+      - { name: bruli.command_pre_middleware, handles: \Bruli\EventBusBundleTests\Behaviour\WithPreMiddleWareCommand }

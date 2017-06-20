@@ -43,8 +43,9 @@ class CommandBus
      */
     private function handlePreMiddleWares(CommandInterface $command)
     {
-        if (true === $this->optionsResolver->preMiddleWareHasCommand(get_class($command))) {
-            $this->container->get($this->optionsResolver->getPreMiddleWareOption('\\' . get_class($command)))->handle(
+        $commandName = '\\' . get_class($command);
+        if (true === $this->optionsResolver->preMiddleWareHasCommand($commandName)) {
+            $this->container->get($this->optionsResolver->getPreMiddleWareOption($commandName))->handle(
                 $command
             );
         }
