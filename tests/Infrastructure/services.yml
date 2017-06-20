@@ -11,7 +11,7 @@ services:
     class: Bruli\EventBusBundleTests\Behaviour\PreMiddleWareHandler
     tags:
       - { name: bruli.command_pre_middleware, handles: \Bruli\EventBusBundleTests\Behaviour\WithPreMiddleWareCommand }
-  with.pro.middleware.handler:
+  with.post.middleware.handler:
     class: Bruli\EventBusBundleTests\Behaviour\WithPostMiddleWareHandler
     tags:
       - { name: bruli.command_handler, handles: \Bruli\EventBusBundleTests\Behaviour\WithPostMiddleWareCommand }

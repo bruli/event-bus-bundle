@@ -2,7 +2,7 @@
 
 namespace Bruli\EventBusBundleTests\Behaviour;
 
-use Bruli\EventBusBundleTests\Infrastructure\Application;
+use Bruli\EventBusBundleTests\Infrastructure\CommandApplication;
 use Bruli\EventBusBundleTests\Behaviour\SingleCommand;
 use Bruli\EventBusBundleTests\Behaviour\SingleCommandHandler;
 use Mockery\Mock;
@@ -13,7 +13,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class CommandBusTest extends TestCase
 {
     /**
-     * @var Application
+     * @var CommandApplication
      */
     private $app;
     /**
@@ -27,7 +27,7 @@ class CommandBusTest extends TestCase
 
     protected function setUp()
     {
-        $this->app =  new Application();
+        $this->app =  new CommandApplication();
         $this->input = \Mockery::mock(InputInterface::class);
         $this->outputInterface = \Mockery::mock(OutputInterface::class);
     }
@@ -58,15 +58,15 @@ class CommandBusTest extends TestCase
 
         $handlerFilename = __DIR__ . '/' . WithPreMiddleWareHandler::FILE_TEST;
         $preHandlerFilename = __DIR__.'/'. PreMiddleWareHandler::FILE_TEST;
+        $this->assertFalse(file_exists($preHandlerFilename));
         $this->assertTrue(file_exists($handlerFilename));
-        $this->assertTrue(file_exists($preHandlerFilename));
 
         unlink($handlerFilename);
-        unlink($preHandlerFilename);
     }
 
     /**
      * @test
+     * @group active
      */
     public function itShouldHandleWithPostMiddleWare()
     {
@@ -76,10 +76,10 @@ class CommandBusTest extends TestCase
 
         $handlerFilename = __DIR__ . '/' . WithPostMiddleWareHandler::FILE_TEST;
         $postHandlerFilename = __DIR__.'/'. PostMiddleWareHandler::FILE_TEST;
-        $this->assertTrue(file_exists($handlerFilename));
+        $this->assertFalse(file_exists($handlerFilename));
         $this->assertTrue(file_exists($postHandlerFilename));
 
-        unlink($handlerFilename);
         unlink($postHandlerFilename);
+
     }
 }

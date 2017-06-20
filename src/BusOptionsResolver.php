@@ -42,7 +42,7 @@ class BusOptionsResolver
      */
     public function addPostMiddleWareOption($command, $handler)
     {
-        $this->preMiddleWareOption[$command] = $handler;
+        $this->postMiddleWareOption[$command] = $handler;
     }
 
     /**

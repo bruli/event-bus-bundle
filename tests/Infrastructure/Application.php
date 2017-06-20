@@ -1,23 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace Bruli\EventBusBundleTests\Infrastructure;
 
-use Bruli\EventBusBundle\CommandBus\CommandInterface;
-use Bruli\EventBusBundleTests\Behaviour\SingleCommand;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 
-final class Application extends \Symfony\Component\Console\Application
+abstract class Application extends \Symfony\Component\Console\Application
 {
     /**
      * @var AppKernel
      */
-    private $container;
-    /**
-     * @var CommandInterface
-     */
-    private $command;
+    protected $container;
 
     public function __construct()
     {
@@ -26,21 +20,6 @@ final class Application extends \Symfony\Component\Console\Application
         $this->container = $appKernel->getContainer();
 
         parent::__construct('command test');
-    }
-
-    /**
-     * @param CommandInterface $command
-     */
-    public function setCommand(CommandInterface $command)
-    {
-        $this->command = $command;
-    }
-
-    public function doRun(InputInterface $input, OutputInterface $output)
-    {
-        $command = $this->container->get('bruli.command.bus');
-
-        $command->handle($this->command);
     }
 
 }
