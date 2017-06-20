@@ -18,12 +18,26 @@ class QueryBusCompilerPass implements CompilerPassInterface
             return;
         }
 
-        $queryBus = $container->findDefinition('bruli.bus.options.resolver');
+        $definition = $container->findDefinition('bruli.bus.options.resolver');
         $queryHandlers = $container->findTaggedServiceIds('bruli.query_handler');
+        $preMiddleWares = $container->findTaggedServiceIds('bruli.query_pre_middleware');
+        $postMiddleWares = $container->findTaggedServiceIds('bruli.query_post_middleware');
 
         foreach ($queryHandlers as $id => $tags) {
             foreach ($tags as $attributes) {
-                $queryBus->addMethodCall('addOption', [$attributes['handles'], $id]);
+                $definition->addMethodCall('addOption', [$attributes['handles'], $id]);
+            }
+        }
+
+        foreach ($preMiddleWares as $id => $tags) {
+            foreach ($tags as $attributes) {
+                $definition->addMethodCall('addPreMiddleWareOption', [$attributes['handles'], $id]);
+            }
+        }
+
+        foreach ($postMiddleWares as $id => $tags) {
+            foreach ($tags as $attributes) {
+                $definition->addMethodCall('addPostMiddleWareOption', [$attributes['handles'], $id]);
             }
         }
     }

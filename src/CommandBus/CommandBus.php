@@ -33,6 +33,8 @@ class CommandBus
      */
     public function handle(CommandInterface $command)
     {
+        $this->container->get($this->optionsResolver->getPreMiddleWareOption('\\'.get_class($command)))->handle($command);
         $this->container->get($this->optionsResolver->getOption('\\'.get_class($command)))->handle($command);
+        $this->container->get($this->optionsResolver->getPostMiddleWareOption('\\'.get_class($command)))->handle($command);
     }
 }

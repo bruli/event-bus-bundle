@@ -18,12 +18,26 @@ class CommandBusCompilerPass implements CompilerPassInterface
             return;
         }
 
-        $commandBus = $container->findDefinition('bruli.bus.options.resolver');
+        $definition = $container->findDefinition('bruli.bus.options.resolver');
         $commandHandlers = $container->findTaggedServiceIds('bruli.command_handler');
+        $preMiddleWares = $container->findTaggedServiceIds('bruli.command_pre_middleware');
+        $postMiddleWares = $container->findTaggedServiceIds('bruli.command_post_middleware');
 
         foreach ($commandHandlers as $id => $tags) {
             foreach ($tags as $attributes) {
-                $commandBus->addMethodCall('addOption', [$attributes['handles'], $id]);
+                $definition->addMethodCall('addOption', [$attributes['handles'], $id]);
+            }
+        }
+
+        foreach ($preMiddleWares as $id => $tags) {
+            foreach ($tags as $attributes) {
+                $definition->addMethodCall('addPreMiddleWareOption', [$attributes['handles'], $id]);
+            }
+        }
+
+        foreach ($postMiddleWares as $id => $tags) {
+            foreach ($tags as $attributes) {
+                $definition->addMethodCall('addPostMiddleWareOption', [$attributes['handles'], $id]);
             }
         }
     }
