@@ -11,11 +11,11 @@ class BusOptionsResolver
     /**
      * @var array
      */
-    private $preMiddleWareOption = [];
+    private $preMiddleWareOptions = [];
     /**
      * @var array
      */
-    private $postMiddleWareOption = [];
+    private $postMiddleWareOptions = [];
 
 
     /**
@@ -31,18 +31,18 @@ class BusOptionsResolver
      * @param string $command
      * @param string $handler
      */
-    public function addPreMiddleWareOption($command, $handler)
+    public function addPreMiddleWareOptions($command, $handler)
     {
-        $this->preMiddleWareOption[$command] = $handler;
+        $this->preMiddleWareOptions[$command][] = $handler;
     }
 
     /**
      * @param string $command
      * @param string $handler
      */
-    public function addPostMiddleWareOption($command, $handler)
+    public function addPostMiddleWareOptions($command, $handler)
     {
-        $this->postMiddleWareOption[$command] = $handler;
+        $this->postMiddleWareOptions[$command][] = $handler;
     }
 
     /**
@@ -57,37 +57,37 @@ class BusOptionsResolver
 
     /**
      * @param string $command
-     * @return string
+     * @return array
      */
-    public function getPreMiddleWareOption($command)
+    public function getPreMiddleWareOptions($command)
     {
-        return $this->preMiddleWareOption[$command];
+        return $this->preMiddleWareOptions[$command];
     }
 
     /**
      * @param string $command
      * @return bool
      */
-    public function preMiddleWareHasCommand($command)
+    public function preMiddleWareHasCommands($command)
     {
-        return array_key_exists($command, $this->preMiddleWareOption);
+        return array_key_exists($command, $this->preMiddleWareOptions);
     }
 
     /**
      * @param string $command
      * @return bool
      */
-    public function postMiddleWareHasCommand($command)
+    public function postMiddleWareHasCommands($command)
     {
-        return array_key_exists($command, $this->postMiddleWareOption);
+        return array_key_exists($command, $this->postMiddleWareOptions);
     }
 
     /**
      * @param string $command
-     * @return string
+     * @return array
      */
-    public function getPostMiddleWareOption($command)
+    public function getPostMiddleWareOptions($command)
     {
-        return $this->postMiddleWareOption[$command];
+        return $this->postMiddleWareOptions[$command];
     }
 }

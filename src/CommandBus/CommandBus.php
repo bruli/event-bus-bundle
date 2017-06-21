@@ -44,10 +44,10 @@ class CommandBus
     private function handlePreMiddleWares(CommandInterface $command)
     {
         $commandName = '\\' . get_class($command);
-        if (true === $this->optionsResolver->preMiddleWareHasCommand($commandName)) {
-            $this->container->get($this->optionsResolver->getPreMiddleWareOption($commandName))->handle(
-                $command
-            );
+        if (true === $this->optionsResolver->preMiddleWareHasCommands($commandName)) {
+            foreach ($this->optionsResolver->getPreMiddleWareOptions($commandName) as $preMiddleWareOption) {
+                $this->container->get($preMiddleWareOption)->handle($command);
+            }
         }
     }
 
@@ -65,10 +65,10 @@ class CommandBus
     private function handlePostMiddleWares(CommandInterface $command)
     {
         $commandName = '\\' . get_class($command);
-        if (true === $this->optionsResolver->postMiddleWareHasCommand($commandName)) {
-            $this->container->get($this->optionsResolver->getPostMiddleWareOption($commandName))->handle(
-                $command
-            );
+        if (true === $this->optionsResolver->postMiddleWareHasCommands($commandName)) {
+            foreach ($this->optionsResolver->getPostMiddleWareOptions($commandName) as $postMiddleWareOption) {
+                $this->container->get($postMiddleWareOption)->handle($command);
+            }
         }
     }
 }

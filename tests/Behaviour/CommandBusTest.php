@@ -58,7 +58,9 @@ class CommandBusTest extends TestCase
 
         $handlerFilename = __DIR__ . '/' . WithPreMiddleWareHandler::FILE_TEST;
         $preHandlerFilename = __DIR__.'/'. PreMiddleWareHandler::FILE_TEST;
+        $preSecondHandlerFileName = __DIR__. '/' . PreSecondMiddleWareHandler::FILE_TEST;
         $this->assertFalse(file_exists($preHandlerFilename));
+        $this->assertFalse(file_exists($preSecondHandlerFileName));
         $this->assertTrue(file_exists($handlerFilename));
 
         unlink($handlerFilename);
@@ -75,11 +77,16 @@ class CommandBusTest extends TestCase
         $this->app->doRun($this->input, $this->outputInterface);
 
         $handlerFilename = __DIR__ . '/' . WithPostMiddleWareHandler::FILE_TEST;
+        $handlerSecondFilename = __DIR__.'/'.WithPostMiddleWareHandler::FILE_SECOND_TEST;
         $postHandlerFilename = __DIR__.'/'. PostMiddleWareHandler::FILE_TEST;
+        $postSecondHandlerFilename = __DIR__.'/'. PostSecondMiddleWareHandler::FILE_TEST;
         $this->assertFalse(file_exists($handlerFilename));
+        $this->assertFalse(file_exists($handlerSecondFilename));
         $this->assertTrue(file_exists($postHandlerFilename));
+        $this->assertTrue(file_exists($postSecondHandlerFilename));
 
         unlink($postHandlerFilename);
+        unlink($postSecondHandlerFilename);
 
     }
 }

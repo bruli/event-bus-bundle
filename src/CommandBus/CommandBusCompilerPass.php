@@ -31,13 +31,13 @@ class CommandBusCompilerPass implements CompilerPassInterface
 
         foreach ($preMiddleWares as $id => $tags) {
             foreach ($tags as $attributes) {
-                $definition->addMethodCall('addPreMiddleWareOption', [$attributes['handles'], $id]);
+                $definition->addMethodCall('addPreMiddleWareOptions', [$attributes['handles'], $id]);
             }
         }
 
         foreach ($postMiddleWares as $id => $tags) {
             foreach ($tags as $attributes) {
-                $definition->addMethodCall('addPostMiddleWareOption', [$attributes['handles'], $id]);
+                $definition->addMethodCall('addPostMiddleWareOptions', [$attributes['handles'], $id]);
             }
         }
     }

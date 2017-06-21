@@ -12,6 +12,7 @@ use Bruli\EventBusBundle\CommandBus\CommandInterface;
 final class WithPostMiddleWareHandler implements CommandHandlerInterface
 {
     const FILE_TEST = 'with-post-middleware.txt';
+    const FILE_SECOND_TEST = 'with-second-post-middleware.txt';
 
     /**
      * @param CommandInterface $command
@@ -19,5 +20,6 @@ final class WithPostMiddleWareHandler implements CommandHandlerInterface
     public function handle(CommandInterface $command)
     {
         file_put_contents(__DIR__. '/' . self::FILE_TEST , 'testing');
+        file_put_contents(__DIR__. '/' . self::FILE_SECOND_TEST , 'testing');
     }
 }

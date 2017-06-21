@@ -9,9 +9,9 @@ namespace Bruli\EventBusBundleTests\Behaviour;
 use Bruli\EventBusBundle\CommandBus\CommandHandlerInterface;
 use Bruli\EventBusBundle\CommandBus\CommandInterface;
 
-final class WithPreMiddleWareHandler implements CommandHandlerInterface
+final class PostSecondMiddleWareHandler implements CommandHandlerInterface
 {
-    const FILE_TEST = 'with_pre_middleware.txt';
+    const FILE_TEST = 'post-second-middleware.txt';
 
     /**
      * @param CommandInterface $command
@@ -19,7 +19,6 @@ final class WithPreMiddleWareHandler implements CommandHandlerInterface
     public function handle(CommandInterface $command)
     {
         file_put_contents(__DIR__. '/' . self::FILE_TEST , 'testing');
-        unlink(__DIR__. '/'. PreMiddleWareHandler::FILE_TEST);
-        unlink(__DIR__. '/'. PreSecondMiddleWareHandler::FILE_TEST);
+        unlink(__DIR__. '/' . WithPostMiddleWareHandler::FILE_SECOND_TEST);
     }
 }
