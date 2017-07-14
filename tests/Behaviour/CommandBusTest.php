@@ -3,9 +3,6 @@
 namespace Bruli\EventBusBundleTests\Behaviour;
 
 use Bruli\EventBusBundleTests\Infrastructure\CommandApplication;
-use Bruli\EventBusBundleTests\Behaviour\SingleCommand;
-use Bruli\EventBusBundleTests\Behaviour\SingleCommandHandler;
-use Mockery\Mock;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
