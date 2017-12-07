@@ -1,13 +1,16 @@
 services:
-  bruli.command.bus:
-    class: Bruli\EventBusBundle\CommandBus\CommandBus
+  _defaults:
+    public: true
+  Bruli\EventBusBundle\CommandBus\CommandBus:
     arguments:
-      - "@service_container"
-      - "@bruli.bus.options.resolver"
-  bruli.bus.options.resolver:
-    class: Bruli\EventBusBundle\BusOptionsResolver
-  bruli.query.bus:
-    class: Bruli\EventBusBundle\QueryBus\QueryBus
+      $container: "@service_container"
+      $optionsResolver: '@Bruli\EventBusBundle\BusOptionsResolver'
+  Bruli\EventBusBundle\BusOptionsResolver:
+  Bruli\EventBusBundle\QueryBus\QueryBus:
     arguments:
-      - "@service_container"
-      - "@bruli.bus.options.resolver"
+      $container: "@service_container"
+      $optionsResolver: '@Bruli\EventBusBundle\BusOptionsResolver'
+
+  bruli.command.bus: '@Bruli\EventBusBundle\CommandBus\CommandBus'
+  bruli.bus.options.resolver: '@Bruli\EventBusBundle\BusOptionsResolver'
+  bruli.query.bus: '@Bruli\EventBusBundle\QueryBus\QueryBus'
