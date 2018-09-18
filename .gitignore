@@ -2,3 +2,5 @@ vendor/
 .idea
 /tests/Infrastructure/cache/
 /tests/Infrastructure/logs/
+/.env.dist
+/symfony.lock
