@@ -19,7 +19,7 @@ final class AppKernel extends Kernel
     public function registerBundles()
     {
         return [
-            new EventBusBundle()
+            new EventBusBundle(),
         ];
     }
 

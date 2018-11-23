@@ -5,11 +5,12 @@ declare(strict_types=1);
 
 namespace Bruli\EventBusBundleTests\Infrastructure;
 
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 abstract class Application extends \Symfony\Component\Console\Application
 {
     /**
-     * @var AppKernel
+     * @var ContainerInterface
      */
     protected $container;
 
