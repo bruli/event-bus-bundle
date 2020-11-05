@@ -25,7 +25,7 @@ class CommandBusTest extends TestCase
      */
     private $outputInterface;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->app =  new CommandApplication();
         $this->input = \Mockery::mock(InputInterface::class);
