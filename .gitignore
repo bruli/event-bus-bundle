@@ -4,3 +4,10 @@ vendor/
 /tests/Infrastructure/logs/
 /.env.dist
 /symfony.lock
+/var/
+/bin/
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
